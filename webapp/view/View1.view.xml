@@ -1,0 +1,82 @@
+<mvc:View controllerName="ovly.data.binding.curriculo.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+	xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<!--<Label text="Sistema"/>
+						<Text text="{device>/os/name}"/>
+						<Label text="Browser"/>
+						<Text text="{device>/browser/name}"/>-->
+						<Text text="Você está usando o sistema {device>/os/name} e o navegador {device>/browser/name}"/>
+						<form:SimpleForm>
+							<form:content>
+								<core:Title text="{i18n>personal_data}"/>
+								<Label text="Nome"/>
+								<Text text="{/nome}"/>
+								<Label text="Sobrenome"/>
+								<Text text="{path:'/sobrenome', formatter:'.toUpper'}"/>
+								<core:Title text="{i18n>address}"/>
+								<Label text="Rua"/>
+								<Text text="{/endereco/rua}, {/endereco/numero}"/>
+								<Label text="Cidade"/>
+								<Text text="{/endereco/cidade}"/>
+								<Label text="Estado"/>
+								<Text text="{/endereco/estado/nome} - {/endereco/estado/sigla}"/>
+								<core:Title text="{i18n>quiz}"/>
+								<Label text="1"/>
+								<Slider min="0" max="100" value="{/quiz_1}" enabled="false"/>
+								<RatingIndicator maxValue="5" value="{/quiz_1_media}"/>
+							</form:content>
+						</form:SimpleForm>
+						<Panel id="panel_competencias" expandable="true" expanded="false" headerText="{path:'skills',model:'i18n'}">
+							<content>
+								<List items="{path:'/competencias'}">
+									<items>
+										<StandardListItem title="{path:''}"/>
+									</items>
+								</List>
+							</content>
+						</Panel>
+						<Panel id="panel_empresas" expandable="true" expanded="false" headerText="{path:'companies',model:'i18n'}">
+							<content>
+								<List items="{path:'/empresas'}">
+									<items>
+										<StandardListItem title="{path:'nome'}" description="{path:'cargo'}"/>
+									</items>
+								</List>
+							</content>
+						</Panel>
+						<Panel expandable="true" expanded="true" headerText="{ path: 'github', model: 'i18n' }">
+							<content>
+								<Table id="table_github" items="{ path: '/', model: 'github'}">
+									<columns>
+										<Column>
+											<Text text="{i18n>github_repo_name}"/>
+										</Column>
+										<Column>
+											<Text text="{i18n>github_repo_description}"/>
+										</Column>
+										<Column>
+											<Text text="{i18n>github_repo_url}"/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem>
+											<cells>
+												<Title text="{github>name}"/>
+												<Text text="{github>description}"/>
+												<Link text="Link" href="{github>url}" target="_blank"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</content>
+						</Panel>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
